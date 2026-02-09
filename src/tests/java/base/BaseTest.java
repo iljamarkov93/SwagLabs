@@ -18,6 +18,7 @@ public class BaseTest {
     protected ChecoutInformationPage checoutInformationPage;
     protected ChecoutOverviewPage checoutOverviewPage;
     protected CheckoutCompletePage checkoutCompletePage;
+    protected MenuPage menuPage;
 
 
 
@@ -62,6 +63,7 @@ public class BaseTest {
         checoutInformationPage = new ChecoutInformationPage(driver);
         checoutOverviewPage = new ChecoutOverviewPage(driver);
         checkoutCompletePage = new CheckoutCompletePage(driver);
+        menuPage = new MenuPage(driver);
 
         driver.get("https://www.saucedemo.com/");
 
