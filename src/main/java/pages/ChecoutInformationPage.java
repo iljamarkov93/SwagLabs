@@ -11,6 +11,7 @@ public class ChecoutInformationPage extends BasePage {
     private By zipFiels = By.cssSelector("#postal-code");
     private By cancelButton = By.cssSelector("#cancel");
     private By continueButton = By.cssSelector("#continue");
+    private By errorMessageContainer = By.cssSelector("#checkout_info_container > div > form > div.checkout_info > div.error-message-container.error");
 
 
 
@@ -39,6 +40,11 @@ public class ChecoutInformationPage extends BasePage {
 
     public void clickContinueButton() {
         waitForVisible(continueButton).click();
+    }
+
+    public String getErrorMessage() {
+        waitForVisible(errorMessageContainer);
+        return driver.findElement(errorMessageContainer).getText();
     }
 
 }
