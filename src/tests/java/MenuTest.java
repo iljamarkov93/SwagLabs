@@ -16,4 +16,12 @@ public class MenuTest extends AuthorizedBaseTest {
 
 
     }
+
+
+    @Test
+    public void AboutPageRedirect() {
+        menuPage.burgerMenuBtn();
+        menuPage.aboutLink();
+        Assert.assertTrue(menuPage.isTextPresent(), "About page is not open");
+    }
 }
