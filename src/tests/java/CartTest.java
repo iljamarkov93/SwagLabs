@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 public class CartTest extends AuthorizedBaseTest {
 
     @Test
+    
     public void cartListIsNotEmpty() {
         inventoryPage.addToCart();
         inventoryPage.openShoppingCart();
@@ -67,6 +68,9 @@ public class CartTest extends AuthorizedBaseTest {
         Assert.assertEquals(checoutInformationPage.getErrorMessage(), "Error: Postal Code is required");
 
     }
+
+
+
 
 
 

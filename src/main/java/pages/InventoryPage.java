@@ -11,6 +11,7 @@ import java.util.List;
 public class InventoryPage extends BasePage {
 
     //Локаторы элементов страницы inventory
+    private By allItems = By.cssSelector(".inventory_item");
     private By inventoryList = By.cssSelector("#inventory_container > div");
     private By addToCartButton = By.cssSelector(".inventory_item:first-child button");
     private By removetButton = By.cssSelector("#remove-sauce-labs-backpack");
@@ -22,6 +23,7 @@ public class InventoryPage extends BasePage {
     private By firstItemImage = By.cssSelector("#item_4_img_link > img");
     private By firstItemDescription = By.cssSelector(".inventory_item:first-child .inventory_item_desc");
     private By firstItemTitleLink = By.cssSelector(".inventory_item:first-child .inventory_item_name");
+
 
     //Локаторы сортировки товаров
     private By sortDropdown = By.cssSelector(".product_sort_container");
@@ -77,6 +79,7 @@ public class InventoryPage extends BasePage {
     }
 
     public void openShoppingCart() {
+
         waitForClicable(shopingCartLink).click();
     }
 
@@ -105,6 +108,20 @@ public class InventoryPage extends BasePage {
                 .stream()
                 .map(WebElement::getText)
                 .toList();
+    }
+
+    public List<WebElement> getAllItems() {
+        return driver.findElements(allItems);
+    }
+
+    public void addTwoItemsToCart(int count) {
+        List<WebElement> items = getAllItems();
+        for (int i = 0; i < count; i++) {
+        WebElement item = items.get(i);
+        item.findElement(By.tagName("button")).click();
+
+        }
+
     }
 
 
