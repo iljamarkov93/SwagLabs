@@ -3,6 +3,8 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class CartTest extends AuthorizedBaseTest {
 
     @Test
@@ -22,7 +24,8 @@ public class CartTest extends AuthorizedBaseTest {
 
     }
 
-    @Test void completePurchaseSuccessfully() {
+    @Test
+    public void completePurchaseSuccessfully() {
         inventoryPage.addToCart();
         inventoryPage.openShoppingCart();
         cartPage.clickCheckoutButton();
@@ -35,7 +38,8 @@ public class CartTest extends AuthorizedBaseTest {
         Assert.assertTrue(checkoutCompletePage.getCompleteContainer().contains("Thank you for your order!"), "Complete message absent!");
     }
 
-    @Test void  continueShoppingWithoutFirstName() {
+    @Test
+    public void  continueShoppingWithoutFirstName() {
         inventoryPage.addToCart();
         inventoryPage.openShoppingCart();
         cartPage.clickCheckoutButton();
@@ -46,7 +50,8 @@ public class CartTest extends AuthorizedBaseTest {
         Assert.assertEquals(checoutInformationPage.getErrorMessage(), "Error: First Name is required");
     }
 
-    @Test void  continueShoppingWithoutLastName() {
+    @Test
+    public void  continueShoppingWithoutLastName() {
         inventoryPage.addToCart();
         inventoryPage.openShoppingCart();
         cartPage.clickCheckoutButton();
@@ -57,7 +62,8 @@ public class CartTest extends AuthorizedBaseTest {
         Assert.assertEquals(checoutInformationPage.getErrorMessage(), "Error: Last Name is required");
     }
 
-    @Test void  continueShoppingWithoutZip() {
+    @Test
+    public void  continueShoppingWithoutZip() {
         inventoryPage.addToCart();
         inventoryPage.openShoppingCart();
         cartPage.clickCheckoutButton();
@@ -66,6 +72,18 @@ public class CartTest extends AuthorizedBaseTest {
         checoutInformationPage.clickContinueButton();
         Assert.assertFalse(driver.getCurrentUrl().contains("checkout-step-two"), "Error, continueShoppingWithoutFirstName");
         Assert.assertEquals(checoutInformationPage.getErrorMessage(), "Error: Postal Code is required");
+
+    }
+
+
+    @Test
+    public void checkSumPriceOfTwoItems() {
+        List<String> addedItems = inventoryPage.addTwoItemsToCart(2);
+        inventoryPage.openShoppingCart();
+
+
+
+
 
     }
 

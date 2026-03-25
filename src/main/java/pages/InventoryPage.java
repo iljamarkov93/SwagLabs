@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryPage extends BasePage {
@@ -114,13 +115,20 @@ public class InventoryPage extends BasePage {
         return driver.findElements(allItems);
     }
 
-    public void addTwoItemsToCart(int count) {
+    public List<String> addTwoItemsToCart(int count) {
         List<WebElement> items = getAllItems();
+        List<String> addedItems = new ArrayList<>();
+
         for (int i = 0; i < count; i++) {
         WebElement item = items.get(i);
+
+        String name = item.findElement(By.cssSelector("inventory_item_name")).getText();
+        addedItems.add(name);
+
         item.findElement(By.tagName("button")).click();
 
         }
+        return addedItems;
 
     }
 
