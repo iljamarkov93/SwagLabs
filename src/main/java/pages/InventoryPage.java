@@ -115,14 +115,14 @@ public class InventoryPage extends BasePage {
         return driver.findElements(allItems);
     }
 
-    public List<String> addTwoItemsToCart(int count) {
+    public List<String> addItemsToCart(int count) {
         List<WebElement> items = getAllItems();
         List<String> addedItems = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
         WebElement item = items.get(i);
 
-        String name = item.findElement(By.cssSelector("inventory_item_name")).getText();
+        String name = item.findElement(By.cssSelector(".inventory_item_name")).getText();
         addedItems.add(name);
 
         item.findElement(By.tagName("button")).click();

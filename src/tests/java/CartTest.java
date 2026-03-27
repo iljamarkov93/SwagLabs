@@ -2,6 +2,7 @@ import base.AuthorizedBaseTest;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CartPage;
 
 import java.util.List;
 
@@ -78,18 +79,14 @@ public class CartTest extends AuthorizedBaseTest {
 
     @Test
     public void checkSumPriceOfTwoItems() {
-        List<String> addedItems = inventoryPage.addTwoItemsToCart(2);
+        List<String> addedItemsFromInventoryPage = inventoryPage.addItemsToCart(2);
         inventoryPage.openShoppingCart();
-
-
+        List<String> itemsInCart = cartPage.getCartItemNames();
+        Assert.assertEquals(addedItemsFromInventoryPage, itemsInCart);
 
 
 
     }
-
-
-
-
 
 
 }
