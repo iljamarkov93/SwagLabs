@@ -82,7 +82,13 @@ public class CartTest extends AuthorizedBaseTest {
         List<String> addedItemsFromInventoryPage = inventoryPage.addItemsToCart(2);
         inventoryPage.openShoppingCart();
         List<String> itemsInCart = cartPage.getCartItemNames();
-        Assert.assertEquals(addedItemsFromInventoryPage, itemsInCart);
+        Assert.assertEquals(addedItemsFromInventoryPage, itemsInCart, "Items doesn't match");
+        cartPage.clickCheckoutButton();
+        checoutInformationPage.fillFirstNameField("Ilia");
+        checoutInformationPage.fillLastNameField("Test");
+        checoutInformationPage.fillZipField("0123456789");
+        checoutInformationPage.clickContinueButton();
+
 
 
 
