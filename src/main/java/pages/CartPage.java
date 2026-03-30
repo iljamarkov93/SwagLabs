@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,6 +36,23 @@ public class CartPage extends BasePage {
                 .stream()
                 .map(WebElement::getText)
                 .toList();
+    }
+
+    public List<Double> getCartItemsPrice() {
+        List<WebElement> priceElements = driver.findElements(cartList);
+        List<Double> priceList = new ArrayList<>();
+        for (WebElement priceElement : priceElements) {
+            priceList.add(parsePrice(priceElement.getText()));
+        }
+        return priceList;
+    }
+
+    public double sumPrices(List<Double> priceList) {
+        double sum = 0;
+        for (Double price : priceList) {
+            sum += price;
+        }
+        return sum;
     }
 
     public boolean isItemInCart(String itemName) {
