@@ -112,6 +112,7 @@ public class InventoryPage extends BasePage {
     }
 
     public List<WebElement> getAllItems() {
+
         return driver.findElements(allItems);
     }
 

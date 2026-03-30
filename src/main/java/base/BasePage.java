@@ -28,4 +28,8 @@ public class BasePage {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    public double parsePrice(String text) {
+        return Double.parseDouble(text.replace("$", "").trim());
+    }
+
 }
