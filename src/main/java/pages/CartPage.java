@@ -40,16 +40,16 @@ public class CartPage extends BasePage {
 
     public List<Double> getCartItemsPrice() {
         List<WebElement> priceElements = driver.findElements(cartList);
-        List<Double> priceList = new ArrayList<>();
+        List<Double> prices = new ArrayList<>();
         for (WebElement priceElement : priceElements) {
-            priceList.add(parsePrice(priceElement.getText()));
+            prices.add(parsePrice(priceElement.getText()));
         }
-        return priceList;
+        return prices;
     }
 
-    public double sumPrices(List<Double> priceList) {
+    public double sumPrices(List<Double> prices) {
         double sum = 0;
-        for (Double price : priceList) {
+        for (Double price : prices) {
             sum += price;
         }
         return sum;

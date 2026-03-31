@@ -3,24 +3,32 @@ package pages;
 import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class ChecoutOverviewPage extends BasePage {
+public class CheckoutOverviewPage extends BasePage {
 
-    private By cartItem = By.cssSelector("#checkout_summary_container > div > div.cart_list > div.cart_item");
+    private By cartList = By.cssSelector("#checkout_summary_container > div > div.cart_list");
     private By cancelButton = By.cssSelector("#cancel");
     private By finishButton = By.cssSelector("#finish");
     private By itemTotal = By.className(".summary_subtotal_label");
     private By summaryTax = By.className(".summary_tax_label");
     private By summmaryTotal = By.className(".summary_total_label");
 
-    public ChecoutOverviewPage(WebDriver driver) {
+    public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getCartItemName() {
-        waitForVisible(cartItem);
-        return driver.findElement(cartItem).getText();
+    public List<String> getOverviewPageItemNames() {
+        List<WebElement> elements = driver.findElements(cartList);
+        List<String> texts = new ArrayList<>();
+        for (WebElement element : elements) {
+            texts.add(element.getText());
+        }
+        return texts;
     }
 
     public void clickCancelButton() {

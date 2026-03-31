@@ -1,15 +1,13 @@
 import base.AuthorizedBaseTest;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
 
 import java.util.List;
 
 public class CartTest extends AuthorizedBaseTest {
 
     @Test
-    
+
     public void cartListIsNotEmpty() {
         inventoryPage.addToCart();
         inventoryPage.openShoppingCart();
@@ -34,8 +32,8 @@ public class CartTest extends AuthorizedBaseTest {
         checoutInformationPage.fillLastNameField("Test");
         checoutInformationPage.fillZipField("110117");
         checoutInformationPage.clickContinueButton();
-        Assert.assertFalse(checoutOverviewPage.getCartItemName().isEmpty(), "Cart list is empty");
-        checoutOverviewPage.clickFinishButton();
+        Assert.assertFalse(checkoutOverviewPage.getOverviewPageItemNames().isEmpty(), "Cart list is empty");
+        checkoutOverviewPage.clickFinishButton();
         Assert.assertTrue(checkoutCompletePage.getCompleteContainer().contains("Thank you for your order!"), "Complete message absent!");
     }
 
@@ -88,6 +86,8 @@ public class CartTest extends AuthorizedBaseTest {
         checoutInformationPage.fillLastNameField("Test");
         checoutInformationPage.fillZipField("0123456789");
         checoutInformationPage.clickContinueButton();
+        List<String> itemsInOverviewPage = checkoutOverviewPage.getOverviewPageItemNames();
+        Assert.assertEquals(addedItemsFromInventoryPage, itemsInOverviewPage, "Items doesn't match");
 
 
 

@@ -16,7 +16,7 @@ public class BaseTest {
     protected InventoryPage inventoryPage;
     protected CartPage cartPage;
     protected ChecoutInformationPage checoutInformationPage;
-    protected ChecoutOverviewPage checoutOverviewPage;
+    protected CheckoutOverviewPage checkoutOverviewPage;
     protected CheckoutCompletePage checkoutCompletePage;
     protected MenuPage menuPage;
 
@@ -61,7 +61,7 @@ public class BaseTest {
         inventoryPage = new InventoryPage(driver);
         cartPage = new CartPage(driver);
         checoutInformationPage = new ChecoutInformationPage(driver);
-        checoutOverviewPage = new ChecoutOverviewPage(driver);
+        checkoutOverviewPage = new CheckoutOverviewPage(driver);
         checkoutCompletePage = new CheckoutCompletePage(driver);
         menuPage = new MenuPage(driver);
 
