@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CheckoutOverviewPage extends BasePage {
 
-    private By cartList = By.cssSelector("#checkout_summary_container > div > div.cart_list");
+    private By cartList = By.cssSelector(".cart_list .inventory_item_name");
     private By cancelButton = By.cssSelector("#cancel");
     private By finishButton = By.cssSelector("#finish");
     private By itemTotal = By.className(".summary_subtotal_label");

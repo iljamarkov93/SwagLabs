@@ -76,7 +76,7 @@ public class CartTest extends AuthorizedBaseTest {
 
 
     @Test
-    public void checkSumPriceOfTwoItems() {
+    public void checkSumPriceOfTwoItems() throws InterruptedException {
         List<String> addedItemsFromInventoryPage = inventoryPage.addItemsToCart(2);
         inventoryPage.openShoppingCart();
         List<String> itemsInCart = cartPage.getCartItemNames();
@@ -87,13 +87,12 @@ public class CartTest extends AuthorizedBaseTest {
         checoutInformationPage.fillZipField("0123456789");
         checoutInformationPage.clickContinueButton();
         List<String> itemsInOverviewPage = checkoutOverviewPage.getOverviewPageItemNames();
+        System.out.println("itemsInOverviewPage" + itemsInOverviewPage);
+        System.out.println("itemsInOverviewPage" +  itemsInOverviewPage.size());
         Assert.assertEquals(addedItemsFromInventoryPage, itemsInOverviewPage, "Items doesn't match");
 
 
 
-
-
     }
-
 
 }
