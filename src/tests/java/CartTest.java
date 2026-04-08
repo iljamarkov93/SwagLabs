@@ -77,21 +77,30 @@ public class CartTest extends AuthorizedBaseTest {
 
     @Test
     public void checkSumPriceOfTwoItems() throws InterruptedException {
+        //шаг 1. Положить два товара в корзину и проверить что именно они попали в коризну
         List<String> addedItemsFromInventoryPage = inventoryPage.addItemsToCart(2);
         inventoryPage.openShoppingCart();
         List<String> itemsInCart = cartPage.getCartItemNames();
         Assert.assertEquals(addedItemsFromInventoryPage, itemsInCart, "Items doesn't match");
+
+        //шаг 2. Проверить что на странице OverviewPage товары из шага 1
         cartPage.clickCheckoutButton();
         checoutInformationPage.fillFirstNameField("Ilia");
         checoutInformationPage.fillLastNameField("Test");
         checoutInformationPage.fillZipField("0123456789");
         checoutInformationPage.clickContinueButton();
         List<String> itemsInOverviewPage = checkoutOverviewPage.getOverviewPageItemNames();
-        System.out.println("itemsInOverviewPage" + itemsInOverviewPage);
-        System.out.println("itemsInOverviewPage" +  itemsInOverviewPage.size());
+        System.out.println("itemsInOverviewPage " + itemsInOverviewPage);
+        System.out.println("itemsInOverviewPage " +  itemsInOverviewPage.size());
         Assert.assertEquals(addedItemsFromInventoryPage, itemsInOverviewPage, "Items doesn't match");
 
+        //шаг 3. Проверить, что сумарная стоимость товаров на OverviewPage совпадает с суммой товаров в корзине
+        List<Double> PricesItemsInCart = cartPage.getCartItemsPrice();
+        System.out.println("PricesItemsInCart " + PricesItemsInCart);
+        double sum = cartPage.sumPrices(PricesItemsInCart);
+        System.out.println("SumPricesItemsInCart " + sum);
 
+        //Я получил цены товаров из корзины и сложил их, теперь нужно эту сумму сравнить с Item total на странице OverviewPage
 
     }
 

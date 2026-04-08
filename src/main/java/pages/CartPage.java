@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CartPage extends BasePage {
 
-    private By cartList = By.cssSelector(".cart_item");
+    private By cartList = By.cssSelector(".cart_item .inventory_item_price");
     private By cartItemNames = By.cssSelector(".cart_item .inventory_item_name");
     private By removeFromCartButton = By.cssSelector("#remove-sauce-labs-backpack");
     private By continueShoppingButton = By.cssSelector("#continue-shopping");
@@ -56,6 +56,7 @@ public class CartPage extends BasePage {
     }
 
     public boolean isItemInCart(String itemName) {
+
         return getCartItemNames().contains(itemName);
     }
 

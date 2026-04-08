@@ -46,7 +46,7 @@ public class CheckoutOverviewPage extends BasePage {
         return parsePrice(text.split("\\$")[1]);
     }
 
-    public double getSummaryTax() {
+    public double getTax() {
         String text = driver.findElement(summaryTax).getText();
         return parsePrice(text.split("\\$")[1]);
     }
