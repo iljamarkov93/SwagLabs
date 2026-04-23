@@ -49,12 +49,12 @@ public class BaseTest {
 
         options.setExperimentalOption("prefs", prefs);
 
-        // Отключаем автоматизационные флаги
+        // Отключаем автоматизационые флаги
         options.setExperimentalOption("excludeSwitches",
                 new String[]{"enable-automation", "enable-logging"});
         options.setExperimentalOption("useAutomationExtension", false);
 
-        // Инициализируем драйвер с настройками и так же подклчюаем классы
+        // Инициализируем драйвер с настройками и так же подключаем классы
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
