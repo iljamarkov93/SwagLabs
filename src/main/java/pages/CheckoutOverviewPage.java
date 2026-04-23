@@ -14,9 +14,9 @@ public class CheckoutOverviewPage extends BasePage {
     private By cartList = By.cssSelector(".cart_list .inventory_item_name");
     private By cancelButton = By.cssSelector("#cancel");
     private By finishButton = By.cssSelector("#finish");
-    private By itemTotal = By.className(".summary_subtotal_label");
-    private By summaryTax = By.className(".summary_tax_label");
-    private By summmaryTotal = By.className(".summary_total_label");
+    private By itemTotal = By.className("summary_subtotal_label");
+    private By summaryTax = By.className("summary_tax_label");
+    private By summmaryTotal = By.className("summary_total_label");
 
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);

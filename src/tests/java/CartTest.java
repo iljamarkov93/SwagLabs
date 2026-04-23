@@ -101,6 +101,17 @@ public class CartTest extends AuthorizedBaseTest {
         System.out.println("SumPricesItemsInCart " + sum);
 
         //Я получил цены товаров из корзины и сложил их, теперь нужно эту сумму сравнить с Item total на странице OverviewPage
+        double itemTotal = checkoutOverviewPage.getItemTotal();
+        Assert.assertEquals(sum, itemTotal,0.01, "Items doesn't match");
+        System.out.println("Общая стоимость товаров из корзины " + "SumPricesItemsInCart " + sum + " соответсвует Item total " + itemTotal);
+
+        //проверить значение total + tax
+        double tax = checkoutOverviewPage.getTax();
+        double total =checkoutOverviewPage.getSummaryTotal();
+        double sumItemTotalPlusTax = tax + itemTotal;
+        Assert.assertEquals(sumItemTotalPlusTax, total, 0.01, "Items doesn't match");
+        System.out.println("Item total " + itemTotal + " tax " + tax + " посчитан верно" + " Total " + total);
+
 
     }
 
