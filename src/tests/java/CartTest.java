@@ -76,7 +76,7 @@ public class CartTest extends AuthorizedBaseTest {
 
 
     @Test
-    public void checkSumPriceOfTwoItems() throws InterruptedException {
+    public void checkSumPriceOfTwoItems() {
         //шаг 1. Положить два товара в корзину и проверить что именно они попали в коризну
         List<String> addedItemsFromInventoryPage = inventoryPage.addItemsToCart(2);
         inventoryPage.openShoppingCart();
